@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
+  <body>
+    <div class="d-flex flex-column mb-3">
+      <section class="p-2" style="margin-bottom: 10%">
+        <nav
+          class="shadow p-3 mb-5 navbar fixed-top navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body"
+        >
+          <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+              <a class="navbar-brand" href="#"
+                ><img
+                  src="https://www.fetel.hcmus.edu.vn/wp-content/uploads/2022/09/logo-fetel.png"
+                  alt=""
+                  srcset=""
+                  style="
+                    width: 150px;
+                    height: auto;
+                    margin-left: 20px;
+                    margin-right: 20px;
+                  "
+              /></a>
+              <form
+                class="d-flex border border-primary-subtle search rounded-pill"
+                role="search"
+              >
+                <button
+                  type="submit"
+                  style="
+                    border: none;
+                    background-color: transparent;
+                    margin-left: 2%;
+                    margin-top: 2%;
+                  "
+                >
+                  <span class="material-symbols-outlined" role="img">
+                    search
+                  </span>
+                </button>
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Search"
+                  aria-label="Search"
+                  style="
+                    border: none;
+                    background-color: transparent;
+                    margin-right: 2%;
+                  "
+                />
+              </form>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="#"
+                    >FEDUCATION dành cho giảng viên</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Danh mục </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About Us</a>
+                </li>
+              </ul>
+              <button type="button" class="btn btn-outline-secondary">
+                Đăng nhập
+              </button>
+              <button type="button" class="btn btn-outline-dark">
+                Đăng ký
+              </button>
+            </div>
+          </div>
+        </nav>
+      </section>
+      <div class="p-2" *ngIf="!isLogin">
+        <app-login></app-login>
+      </div>
+    </div>
+  </body>
+  <footer class="">
+    <div class="container-footer">
+      <div class="container-footer-header position-relative">
+        <div class="">
+          <div
+            class="col position-absolute top-50 start-0 translate-middle-y title-footer"
+            style="color: white; justify-content: center; margin-left: 5%"
+          >
+            <span class="d-flex justify-content-start">
+              Sản phẩm được thiết kế cho Đồ án môn học lập trình java
+            </span>
+          </div>
+          <div
+            class="col position-absolute top-50 end-0 translate-middle-y title-footer"
+            style="color: white; justify-content: center; margin-right: 5%"
+          >
+            <div class="d-flex justify-content-end">
+              <img
+                class="image-footer"
+                src="https://ssg.vn/wp-content/uploads/2023/08/java.jpg"
+                alt=""
+                srcset=""
+                style=""
+              />
+              <img
+                class="image-footer"
+                src="https://www.fetel.hcmus.edu.vn/wp-content/uploads/2022/09/logo-fetel.png"
+                alt=""
+                srcset=""
+                style="background-color: white"
+              />
+              <img
+                class="image-footer"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAq1BMVEX///8nPnQAJmcnPnInPnUAKWkAJWYAI2YAKGgAJ2n8/fwAKmgXM24iOnIAI2UZNW8AIGX19vgAHGP3+Pns7vGhqb7a3uUQL2xfbZJpdZrj5uvIzNcZNG8fOHGVnrU8UIC9w9Cxt8i4v86mrcHT1+CQmbJOX4pFVoNicJTX2+SGkKtXZ5F2gqIAGWIAAFw1SXp7hqMAE2EACV9reZkAAF9kcplNXoxAVYVtfaArZfJLAAATKklEQVR4nO196ZqiPLQuCBElSTETBJkRFLDBdu+v6/6vbCdoWUNXlahY9jkP7w8VQcxK1pyVwHEjRowYMWLEiBEjRowYMWLEiBEjRowYMWLEiBEjRowYMWLEiBH/38H0MvqqOU1hcFwURI9uz/CIfxf0dU98k761eklfNbzLHtyqW2Fo8ulzBEKOswCw2cEzsOir2ehmd860Xe0hDbwRWRs2eXo6mjWcR0DcHTjdu+urjDCzJtstX5oPaub1SKdPokik8nhoS03WoPZwkIOY0uaCJR1jrSBov+fnjfuwpl4He0ZiTSvFl0E0dCFUfKEjQysw3xRV5TeUwhKKVBrNBazkb273b6FraQ260TNO327FZZUjpm6oAPrVH6xCnMucQUjHuZov2Q9o6+Vwk9jrPhQz7/0ZgAXTRqRmF4k6o9yCC47z5vxBAqvZQUa5OPm55l4ImTOdrSRNBTYYBfzQ0AZGVDgJo8NGE/ZNAEtGpnP48R94oDBVZ+FPtvoi2AoMVyWv+FTa1uSgVeL4qCTzTn86CrG5bMKzb0qwYhSuu9MmnHRcakk+/ncpLEhLZdAUlIoOBcRMHg20PVr1hRTQV5OA0PB2HQ37GbWKyTTsbGFAuvdgqpQof1D7z8LWm66x2Qx4lBRER4iLCTyetZxOrbrUutsBM/jcHtJvDIG0VCg9BFkHBE8kySTnIc3/Hi4br2hy7HyHcailojoufdX68keayTqEugFhvSYkNxjf4phLnuofafNFSNlocN7sMIb0kMmWNZ+qKviawBfYe0lX1ZqKa0lwE3HWrDz7mx9HCaj+4DSVHPRnfNAeZmxFvfxNI8vYdS0BuTovKrI6nZGf/wlnjnJojkL6WqPDIK7B6txvPoG1U1M2oD4KTt/VM/HhJBqdqnR5JnouQbkra+2Mv6JZMmdH7N3MyYmzU+loJB8IM9c7M1YrUkRVP0HTZj5pbgr79uCFqkxCTCQf669qlD/p4DlAwYQOnOcIOAyym9qUPx0pNAV8UM7BQ8MO24dlxEvOJkRV1yxXTklw7lffISqO/p6joNCjI5hI6KEkxsRfkkDmMvhCWPzrNoNmHBRwSUgpUZm0MVrc2sjbsFdQxN6D+fzQ1fIg2ZeYTFLq6oA695sh7ncDDN8/OM//ewjw5EE0w0Y6BFoFwjP3IcrG2LxtTDB4G+RVFyxzKZozWZRd94eplNttdDoIILpDWrBLD0Rz5pHLFlZ18LPOHLUS81djXKl3cpZdH+0pgRVAQuFP8x8dRm2NpBOJ7k3m4WvIDSqoYq0QWZmyW4H2Pn/z1b+vCTwfOJyD9z17B5Bqrxi8JKvID9vFZ3ibaaeIt2c8WHa6OCZEuFb66SRVC8ht0l+C5fmLNGF6zDM+T3/GD9eaOjqmQUsA2+ul33CIX52/TG7U4/QGAN6Za4eBg5S5WqWdfQqk5ur4zW2WAurD5vt5J+9aofyQc7NHjeND+PRnlRlcerXse0vM86SPYLmExIaRhUvwQ5Nxpk82bupgBU7x9crUmos8z6s9OsgLktmkCSHq1R2DIIAFy29WtS9cy6JyCxiB/Pz8peZyl2T5RCUO1TdGVK/b+wujLJA0Ynk181oCzQox+nhc9Lg4dQzqltrsv7wCwOlEur/h9yQqQTfIhN0oHYG8cpmxSecKaJOUn93JhXoDx1e6SdzrLEXEdEwHcpF9syVUMLk1JXz3BJw7R1QYtHl4zT9ZkngkkJ9cxAh7crSetRpd8b+9kOaNk7Icw4pQMdwcJlMuRDsTXgjkZ8b5618hgKPm3T/dy7fZTycTAsSY+TUz2v3u5cZQq8iJPh7/uei3DTh0iLuDdzKM8aSJspJHTyv6+TpL6IaKeOJR3r9MKS5e0sNpD1/vGmhNl/w1n8lTdGXSwhN8/g3QZd2USTjOvG5W8qp/P4vVpDwQVpIrpzBjgsW3FF7qSAdbCMn91KiL2cx8UMmcNhOuukMAXzm00zbzS1sb5QTfr2IjpuZ27bEJT3fexxX5CzV8M4CMQtzciduuhbknCmTBUn2VsqZK9B2LUkXz4FT2J8gK3xfjDFwRppmF8oE+nl/elCCQo/T8RRfjv6KABE+ji39IrYTwjjpBuNRn+whzTm75+RewbSPwyeXWKGv8jwPIPJrbMmd3893c/eb8Re/hYepq+x2R2D8xq3jNTPEbbCb/TFVKF0vAvQOwOCval7iCxzd5Jlqc+8t/pGAzmTECE9Pb5MjzMpMcrYVyQyCb1QohkNyekR4Csc44cqn9BiTZNLNt1PpX+WyvMC1+QghebaQhC+CuTlikEhsvMUygH1qrNUL16hjgX5s5s3aA4HXEsVK5wVI2prNrOa/MLg8H04Mjg0lSrKOy9uqqbY/xk3ilFG30PD30dyQOFic2REq5ZyA19YU0pvDAkEVgt8k6DAuv9mKnIxEX12bLT2MvD1bhH4NwIxshj9H0MrZISTeCqM2qlF9NCgdUtdUk6ZJ+fZwavxXDTCnm84yZn1peXDaflgCR+aK4MEOUZ6QwuFZNVwTYLRVFdE1l2AfYyUCeG0b0JfgVc7F0SbO8YzCBHZNg3946rMTZan01ChC1HzdqiSxeNP5kmPBEw50H6Bpc/E216F/YnHJqJIrV4LmGZYrFwNq2tkDPKLcEelpLAIAQ8Jcqhi8QvlSaORek/8w3Kad5GXlCigGQUiFJUoSpBbml9+WQIJyvosHi/RQsuxxi+tTfxMqF/yaaUCRvZXlBkMSrdA861r2lmDuZC8mwK6UcAMRFm4OPayi+QftmCKnta5IJ2Lf5CsDng8W/xWfjrOnQ/poc4BkAc6W/gU3Ih3jQ3il6uiFoYpWMQuH64FCLrFg96dDBConMKAji/myvNfgdgfzEjctotfdWK6M7JVxfY7TZkY3aGVM7KvNbVfK1CMh7AnkcRnGOlMby9h2TCuh6OaoCs0HPFjUWgIDdAPNQcRptLtR7xh/MHzOGJxIRJVqkrwe/W7htSj7RCYBA4tt4iHq3XJ9I29mffRB7ffvdRaLwXg75D4f+/rZGZfUiiMzcNcH2thsxJOWiaLDiI/K7L8+75K/E2gegQdytzK8UZaBA340b7P/uO4ZaiM9QSIZREKZ3cdLoC3h7hMi+f6tK9D2BovrwZRRvocX5bK6Uvf1IOtIm//0gYnj+Nj8GM2gIaqwL+vyZe40rvkCfaq8fQznBOPcuEec1m4WLpe8oXA4QHA6GvUSQAuEM53VPNyTYxYxE/RsKf668qQfMLErbqhGX8FfU8xcKYFdG8GtZ/BfXbWu219svdXm2qpnbNMsvCBRvVjSGbVJoFMYDJiFlYyPOmUU3F59bfrFXtde3sH/p+oQsxaYJb101bK7K8kKralSyG267ycHUVz4j8cJqr0/g5nkRUvIwVvhbb/U/JBAz174gFJCb3NTWu4rpX3chfSKNZACfTTYM2V5j5N+aFdZWaZb72Bed/iO5Rk3GWTulo8P7M/uLxtkwFT8BT+blANmMGCAiSRD1T2GUCgYWZzfbvFOZSTPD72MLMESSJRHIkzOE253NiBO5pucg0jcSs6hXChyDW822dad/vYocHdXDLMaf2/WfnQO/GIYV2pf1Rs5TXzOdsLILH8Wcu5b0w9Y69qohCj5S6N++hijZYlwlnpe55o38ILvrydEMenrfhIE97UYKVhsuc/R52/Gq4dUhRJhx6/L2zIMlKQqaSJKq/76tYtjO/3dNjp2UqX2dSfPodvukdrlsPdWdpOslI1s5PlDwLLqpUQxeWZZ1vV+vnfy2xKKl2rV65PZy3vdeWvNi6JfL2ubc0t8JbXaQPdNbOYMuX7pxQWfscfEsZA2SLUXv60zK1at9UIjjcXLibPXmOTlSpt2ePBos402bYoRIqZ4dAc36M3z9tnzGR01gcmaa73QSlv32kTj/D7haRUNlMMz/5gACOL8gpFu9d7kxAnksc0byjFRdbwagUi5mABIAwzrtnQD8DplVBskliZX0Y0KYx0SvWGzixm2I9F9CG9+W53S99DnEPu36X0ON5EXwwHv6mOIRfSSFJZsyMrJ0Lai/+da7zfBnUh2VDh5g4sJwL02MueDjGB7pVCAoWiuj97NTR9nh/umtT5DqETfIRH7ZNM2FsYD5MSwUX9+xgmY4Lz2qfJKFpK+v97zqodaytb8C+T/b9axVb9fbKM5khLECcJW6nBn4+v4K65hGG41r/IFshutmicPzEMJ578DV+aza8v2gipgoVcLJgXp5eZqBJ0shx0I2TF7ZxQQSqCrOnvSexm/PUXiAT8SUM6udc+nc1lrYTqDiEyTkQ4xjQw11546k075GP/g7qy98ciTwIuQ9zpr6l3NqlpS5j6AwRCLqxAvytm8GKYJnRu+VXjwtOQ+hi5TqadzcaODEq953XnPTm0KqXUmh2eSSOj557gSbe+xaa7ak7xi652bX3vKs6DdmNiv6Nzn7DeAkbJNBS4RdGvSIb3bCOINPJhDfyaH4Xir9hot3/TOMmm2tlxMI/CoYyCJGdYGpB6jy/RN3+QcK/8oMv/8C7bm9dFFrzahsVCjdOFn+gpUKVH+f2mxjy568tHg1Fwpi0cWSRz5zwEVEKJBIv6DfHugURR54JulbjpkJXYUWJ7tpPpCi8eoTyzs9h7E85bqVMvX9MLZIWvt4kSArjtM44YMA4iIOX4YSF1y566lPW0Lg4l5lNJFa9LM/ySl+IpExLzSzQVxMUMCRNHLlyFNcroXrV2YWieeCspcbbSAhJGgiBveYKDe6LX/6IHtDofZHs3nf59I5XHGYbBMTQdWVjdB5I65KzVVCrziBFbl6C18h0joZct7JDOqUs3qbLdt/pVA2uQDyiqG5NAzDbOkFL6pu7GYVl58uwyFn/e5183xLL7NmdYUUMKC9cAUC9DbvXQX9mm4jERen3FpRjGi/jw8UCqLkxjkXv6FQJHam9xFymxllI6RxRTofcu/PkgjBguqG3rm7k0GkXAoU18QKl04Yl54o3FrvjAqIzF57uaxU2g+e2rJdepOrNgT4HO00YRtWs07e9GKN9cvoEE8misNt1IOmERnJgvhkRkTZvKWQnmt6OPZGo9NO3qsZp80auRnIHnIsNUx7PFYDLlv323hj9RJd4D+5KCpFxf8XYtzklHn//Ee/PRwJr4ZfKbmiTw2KQe2E+6uQaaQTeMVwm4CYhNVli0IlIdjL/U4miuJ3WCL6oiCfHSvdZ6V7wdinHzD9jBlIzYXndyAwDgzkRVQOoPe7GFDVtHrCxSEmaN3P1tqLZ4bFonv5DmunQ7Xi9s9nb1tuX3RdplfDFilQFdYA4rePLRORazI7zhrKZ7Z6uxx7Gk+vHr+kMQrhbIiZ7U/g8W9q2x6SZz7AWEEQRve4s/zK9OYaPpJZXccn+/tUbxoHc58qSH9I5d1aCMOwKHJqfpbgHn1sdz6HXUAkPuQpRrFKjQqCFISAu6zjpiGBK6+miKwes8O260DcxHaWZZ7n3YdL46cqB6T6hD/MmCKxmagaMXsOEGfHUXcieV2JYkTBynrVUVnMOEFODqcza9Xt32fGCfs9/Tr+W50lAnX87tq9ueILn07SeDuiUoTsqT+7OeuCeMcq6mJf0lXpUByVhaqqT6T9SwvLHXO5ZOX3hm0SSc/N2TM+7N+E7d+rbclnKwHNlsDwnqtk3Ln/uQRm88aygpzwJqdBv6NwVrHEMNlH0R5O4m73wyr2SnJ6tsMKdlvK82zvzoqEqVcresS5ksi2mo+g+PlqdrYpXXvHMvjgC7c765bGGzkNjzRwotAoDo+wKkkjcwvisNGzlvuj2Xmh8MnmPNCtmqhJyblq3jQsz5N/MWFjBOCemlwuPt/Y5EAhl4KKjiFmrU1gxblT2PW26as2px+XWJzE6EAh19AxbLu9u7vN2F19v9ZNLgzbL6Ntd33Pp7R5XYHzR2xKpUmpovBmjaEBngYOCvar00NLjAImrsS77Ckztv2yiGql0AuXPj/ZcBV8XW2n7y090bZra/IFhXdW5J/fPgU8XurekUJRoGALDhIQdtTIOUzsKUvxPO/UmWrLnhdFMo0guwsnNqXwdVtpfZ3BNlKtYPBVlP3wRQdupl1ol8z/UAq7qbKEMuxGwqwwgTObicdtl1RnWvta8V0TSdLWXcFOnBrJ5hYHhtXMjkJNEMqp/SgKv0A27eSwhO1J00yoSPKUp12cJIRoXHjcVXlLKayqKjffaBqLdFH1Sm8phQ5X+bxg/HsUuqYbK3SsXqwFpZBSLHjME2G7C0SSYpmaWyJy9BjeUGgqqDS1CM/jjkILURZf/WMUqr6IydMTbbMmdbOdsZQzQy7BPPcRYmK2kmZCiODT4qgJy6eOQnG7YeRDISTMhLo7h8sgDOiA/lMU2s5+sdiXzB5ozprJYeR07Y+rhq9WSGUHXt0If173yE27h3jJ+66S2a4bPreolLtVyRlrZ0NP/0vrar4Dy7C6zsujL75W9cM8FuMn8f9cg0eMGDFixIgRI0aMGDFixIgRI0aMGDFixIgRI0aMGDFixIgRI0aMGDFixIgRI0aMGDFixI/g/wDLZqipEaaE3gAAAABJRU5ErkJggg=="
+                alt=""
+                srcset=""
+                style="width: auto; height: 60px; background-color: white"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+      </div>
+      <div class="position-relative">
+        <div class="position-absolute top-0 start-0">
+      <div class="d-flex justify-content-start" style="margin-top: 50px; ">
+        <div class="d-flex flex-row mb-3">
+          <div class="p-2">
+            <div class="d-flex flex-column mb-3" style="margin-top: 50px; color: whitesmoke; font-size: 14px;">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div class="p-2">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Danh mục </a>
+                  </li>
+                </div>
+                <div class="p-2">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Dạy học</a>
+                  </li>
+                </div>
+                <div class="p-2">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">About US </a>
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </div>
+          <div class="p-2">
+            <div class="d-flex flex-column mb-3" style="margin-top: 50px; color: whitesmoke; font-size: 14px;">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div class="p-2">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Các khóa học đã lưu </a>
+                  </li>
+                </div>
+                <div class="p-2">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Xem các khóa học đã mua</a>
+                  </li>
+                </div>
+                <div class="p-2">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Nhận xét khóa học tiêu biểu</a>
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="position-absolute top-0 end-0 d-flex flex-column mb-3" style="margin-top:  70px; margin-right: 5%; ">
+      <span style="color: white;font-size: 30px;" class="title-footer p-2">
+        Các công nghệ sử dụng
+      </span>
+        <div class="p-2" style="background-color: whitesmoke; margin-top: 5px;" >
+          <mat-accordion>
+            <mat-expansion-panel >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  BACKEND
+                </mat-panel-title>
+                <mat-panel-description>
+                  Java Springboot
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <span>Java springBoot là framework của spring.io phổ biến và nhiều tài liệu nhất về lập trình web java. Tài liệu tham khảo:
+              <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started" target="_blank"><img style="height: 40px;" src="data:image/png;base64,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" alt="" srcset=""></a>
+              </span>
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  FRONTEND
+                </mat-panel-title>
+                <mat-panel-description>
+                  Angular v16.1.0
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <span>Angular là framework của Google, được coi là framework về frontend khó học nhất. Tài liệu tham khảo:
+                <a href="https://angular.io/start" target="_blank"><img style="height: 40px;" src="data:image/png;base64,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" alt="" srcset=""></a>
+              </span>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+    </div>
+
+  </div>
+    </div>
+  </footer>
+</html>
