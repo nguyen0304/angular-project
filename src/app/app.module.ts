@@ -24,6 +24,8 @@ import { LoginComponent } from './component/login/login.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { SignUPComponent } from './component/sign-up/sign-up.component';
+import { NgToastModule } from 'ng-angular-popup' // to be added
+import {NgSwitch, NgSwitchCase, AsyncPipe} from '@angular/common';
 @NgModule({
     declarations: [
         AppComponent,
@@ -35,6 +37,8 @@ import { SignUPComponent } from './component/sign-up/sign-up.component';
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
+        NgSwitch,
+        NgSwitchCase,
         AppRoutingModule,
         BrowserAnimationsModule,
         MatSlideToggleModule,
@@ -44,6 +48,7 @@ import { SignUPComponent } from './component/sign-up/sign-up.component';
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
+        NgToastModule,
         ReactiveFormsModule,
         FormsModule,
         MatProgressBarModule,

@@ -9,4 +9,5 @@ export class HomePageComponent {
   isLogin = false;
   isSignUp = false;
   panelOpenState = true;
+  
 }
