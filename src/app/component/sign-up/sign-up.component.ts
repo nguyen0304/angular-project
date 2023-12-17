@@ -11,7 +11,7 @@ export class SignUPComponent {
   isForget = false;
   hide = true;
   progressValue: 0| null = 0;
-  handleLogIn(){
+  handleLogin(){
     this.reset();
     this.isLogin = true;
   }

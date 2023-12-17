@@ -32,11 +32,11 @@
         >
           <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
         </button>
-        <mat-progress-bar
+        <!-- <mat-progress-bar
           mode="determinate"
           value="{{ progressValue }}"
-        ></mat-progress-bar>
-        <mat-card-footer> <span style="font-size: 12px; font-style: italic;">Nhập email của bạn tại đây</span></mat-card-footer>
+        ></mat-progress-bar> -->
+        <!-- <mat-card-footer> <span style="font-size: 12px; font-style: italic;">Nhập email của bạn tại đây</span></mat-card-footer> -->
       </mat-form-field>
     </div>
     <div class="title d-flex p-2">
@@ -86,7 +86,7 @@
       <span
         class="text-decoration-underline"
         type="button"
-        (click)="handleLogIn()"
+        (click)="handleLogin()"
         >Đăng nhập ngay</span
       >
     </span>
@@ -96,7 +96,7 @@
       <span
         class="text-decoration-underline"
         type="button"
-        (click)="handleLogIn()"
+        (click)="handleLogin()"
         >FEDUCATION cho giảng viên</span
       >
     </span>

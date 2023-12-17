@@ -2,50 +2,52 @@
     <h1 class="title d-flex p-2">
         Đăng nhập vào tài khoản FEDUCATION của bạn để đăng ký khóa học và cùng nhau học tốt nào
     </h1>
-    <form action="submit">
-    <div class="title d-flex p-2">
-        <mat-form-field class="example-full-width">
-            <mat-label>Nhập email của bạn tại đây</mat-label>
-            <input type="email" matInput  placeholder="Ex. pat@example.com">
-          </mat-form-field>
+    <form [formGroup]="myForm" (ngSubmit)="handleLogin()" #loginForm="ngForm">
+        <div class="title d-flex p-2">
+            <mat-form-field class="example-full-width">
+                <mat-label>Nhập email của bạn tại đây</mat-label>
+                <input type="email" matInput placeholder="Ex. pat@example.com" ngModel name="email" #email="ngModel" required email>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+                    <div *ngIf="email.errors?.['required']">Email là trường bắt buộc.</div>
+                    <div *ngIf="email.errors?.['email']">Email không hợp lệ.</div>
+                </div>
+            </mat-form-field>
+        </div>
+        <div class="title d-flex p-2">
+            <mat-form-field class="example-full-width">
+                <mat-label>Nhập mật khẩu của bạn tại đây</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" ngModel name="password" #password="ngModel" required minlength="6">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
+                    <div *ngIf="password.errors?.['required']">Mật khẩu là trường bắt buộc.</div>
+                    <div *ngIf="password.errors?.['minlength']">Mật khẩu phải có ít nhất 6 ký tự.</div>
+                </div>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto example-full-width">
+            <button class="btn btn-success" type="submit" [disabled]="!myForm.valid" >Đăng nhập</button>
+        </div>
+    </form>
+    
+    <div class="forget d-flex p-2">
+        <span class="forget text-body-secondary">
+            hoặc <span type="button" class="text-decoration-underline" style="color: #5624d0; font-weight: 600;"> Quên mật khẩu</span>
+        </span>
+    </div>
+    <div class="title d-flex p-2" style="border-top: solid 1px grey;">
+        <span class="title-signup">
+            Chưa có tài khoản ? Hãy <span class="text-decoration-underline" type="button" (click)="handleSignUp()">Đăng ký ngay</span>
+        </span>
     </div>
     <div class="title d-flex p-2">
-    <mat-form-field class="example-full-width">
-        <mat-label>Nhập mật khẩu của bạn tại đây</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-      </mat-form-field>
+        <span class="title-signup" style="font-style: unset; color: cadetblue;">
+             <span class="text-decoration-underline" type="button" (click)="handleSignUp()">FEDUCATION cho giảng viên</span>
+        </span>
     </div>
-    <div class="d-grid gap-2 col-6 mx-auto example-full-width">
-        <button class="btn btn-success"   type="button">Đăng nhập</button>
-      </div>: 2
-</form>
-
-<div  class="forget d-flex p-2 " >
-
-    <span class="forget text-body-secondary"  >
-        hoặc <span type="button" class="text-decoration-underline" style="color: #5624d0; font-weight: 600;"> Quên mật khẩu</span> 
-    </span>
-</div>
-<div  class="title d-flex p-2 " style="border-top: solid 1px grey;" >
-    <span class="title-signup" >
-        Chưa có tài khoản ? Hãy <span class="text-decoration-underline" type ="button" (click)="handleSignUp()">Đăng ký ngay</span>
-    </span>
-</div>
-<div  class="title d-flex p-2 " >
-    <span class="title-signup" style="font-style: unset; color: cadetblue;" >
-         <span class="text-decoration-underline" type ="button" (click)="handleSignUp()">FEDUCATION cho giảng viên</span>
-    </span>
-</div>
 </div>
 
-    <ng-toast   [style]="{padding: '500px'}"></ng-toast>
+
 
 <app-sign-up *ngIf="isSignUp"></app-sign-up>
-
-
-
-
-  
