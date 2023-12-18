@@ -2,70 +2,61 @@
   <h1 class="title d-flex p-2">
     Đăng ký tài khoản mới để cùng học với FEDUCATION
   </h1>
-  <form action="submit">
+  <form (ngSubmit)="handleSignUp(nameInput, email, password, confirm, registrationForm)" #registrationForm="ngForm">
     <div class="title d-flex p-2">
-      <mat-form-field class="example-full-width">
-        <mat-label>Nhập tên đầy đủ của bạn tại đây</mat-label>
-        <input matInput />
-      </mat-form-field>
-    </div>
-    <div class="title d-flex p-2">
-      <mat-form-field class="example-full-width">
-        <mat-label>Nhập email của bạn tại đây</mat-label>
-        <input autocomplete="off" matInput placeholder="Ex. pat@example.com" />
-      </mat-form-field>
-    </div>
-    <div class="title d-flex p-2">
-      <mat-form-field class="example-full-width">
-        <mat-label>Nhập mật khẩu của bạn tại đây</mat-label>
-        <input
-          matInput
-          [type]="hide ? 'password' : 'text'"
-          autocomplete="off"
-        />
-        <button
-          mat-icon-button
-          matSuffix
-          (click)="hide = !hide"
-          [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hide"
-        >
-          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-        </button>
-        <!-- <mat-progress-bar
-          mode="determinate"
-          value="{{ progressValue }}"
-        ></mat-progress-bar> -->
-        <!-- <mat-card-footer> <span style="font-size: 12px; font-style: italic;">Nhập email của bạn tại đây</span></mat-card-footer> -->
-      </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Nhập tên đầy đủ của bạn tại đây</mat-label>
+            <input matInput ngModel name="nameInput" #nameInput="ngModel" required  minlength="3" />
+            <div *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)" class="error-message">
+                <div *ngIf="nameInput.errors?.['required']">Tên là trường bắt buộc.</div>
+                <div *ngIf="nameInput.errors?.['minlength']">Tên phải có ít nhất 3 ký tự.</div>
+            </div>
+        </mat-form-field>
     </div>
     <div class="title d-flex p-2">
         <mat-form-field class="example-full-width">
-          <mat-label>Nhập lại mật khẩu</mat-label>
-          <input
-            matInput
-            [type]="hide ? 'password' : 'text'"
-            autocomplete="off"
-          />
-          <button
-            mat-icon-button
-            matSuffix
-            (click)="hide = !hide"
-            [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide"
-          >
-            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-          </button>
+            <mat-label>Nhập email của bạn tại đây</mat-label>
+            <input matInput ngModel name="email" #email="ngModel" required email/>
+            <div *ngIf="emailFormControl.invalid && (email.dirty || email.touched)" class="error-message">
+                <div *ngIf="email.errors?.['required']">Email là trường bắt buộc.</div>
+                <div *ngIf="email.errors?.['email']">Email không hợp lệ.</div>
+            </div>
         </mat-form-field>
-      </div>
-    <div
-      class="d-grid gap-2 col-6 mx-auto example-full-width"
-      style="margin-top: 5px"
-    >
-      <button class="btn btn-success" type="button">Đăng ký</button>
     </div>
-  </form>
-
+    <div class="title d-flex p-2">
+        <mat-form-field class="example-full-width">
+            <mat-label>Nhập mật khẩu của bạn tại đây</mat-label>
+            <input matInput ngModel name="password" #password="ngModel" required password minlength="8"/>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
+                <div *ngIf="password.errors?.['required']">Mật khẩu là trường bắt buộc.</div>
+                <div *ngIf="password.errors?.['minlength']">Mật khẩu phải có ít nhất 8 ký tự.</div>
+            </div>
+        </mat-form-field>
+    </div>
+    <div class="title d-flex p-2">
+        <mat-form-field class="example-full-width">
+            <mat-label>Nhập lại mật khẩu</mat-label>
+            <input  matInput matInput ngModel name="confirm" #confirm="ngModel" required confirm />
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+            <div *ngIf="confirm.invalid && (confirm.dirty || confirm.touched)" class="error-message">
+                <div *ngIf="confirm.errors?.['required']">Xác nhận mật khẩu là trường bắt buộc.</div>
+                <div *ngIf="password !== confirm && confirm.dirty">Mật khẩu xác nhận không khớp.</div>
+            </div>
+        </mat-form-field>
+    </div>
+    <div class="d-grid gap-2 col-6 mx-auto example-full-width" style="margin-top: 5px">
+        <button class="btn btn-success" type="submit" [disabled]="!registrationForm.valid">Đăng ký</button>
+    </div>
+    <!-- Hiển thị thông báo nếu form không hợp lệ -->
+    <div *ngIf="registrationForm.invalid" class="error-message">
+        Vui lòng kiểm tra lại thông tin đăng ký
+        </div>
+        </form>
   <div class="title d-flex p-2">
     <span
       class="title-signup"

@@ -1,7 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import { AppService } from 'src/app/Service/app.service';
+import { AuthService } from 'src/app/Service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +15,7 @@ import { NgToastService } from 'ng-angular-popup';
 
 export class LoginComponent {
   hide = true;
+  loading = false;
   progressValue: number | null = 0;
   isLogIn = true;
   isSignUp = false;
@@ -31,43 +36,43 @@ export class LoginComponent {
     password: this.passwordFormControl,
   });
   constructor(
-    private toast: NgToastService) {
-    this.showSuccessTopCenter();
+    private toast: NgToastService,
+    private router: Router,
+    private authService: AuthService,
+    private appService: AppService,
+    private http: HttpClient) {
+      this.loading = false;
   }
   handleSignUp() {
     this.isLogIn = false;
     this.isSignUp = true;
   }
 
-  showSuccessTopCenter() {
-    this.toast.success({
-      detail: 'SUCCESS',
-      summary: 'Your Success Message',
-      duration: 5000,
-      position: 'topRight'
-    });
-  }
-
   // New method for handling login
-  handleLogin() {
+  handleLogin(email: any, password: any, loginForm: NgForm) {
+    email = email.value;
+    password = password.value;
+    
     // Check if email and password are valid
-    if (this.emailFormControl.valid && this.passwordFormControl.valid) {
-      // Perform your authentication logic here
-      // For demonstration purposes, show a success toast
-      this.toast.success({
-        detail: 'Login successful',
-        summary: 'Success',
-        duration: 5000,
-        position: 'topRight'
+    if (loginForm.valid) {
+
+      console.log(email);
+      this.authService.login(email, password).subscribe((data: any ) =>{
+        
+        if(data.success == true){
+          this.appService.notiSuccess("Bạn đã đăng nhập thành công","Chúc bạn có trải nghiệm tuyệt vời cùng FEDUCATION");
+        }
+        console.log(data);
+        localStorage.setItem('token', data.token);
+        this.loading = true;
+        location.reload();
+      },
+      error =>{
+        this.appService.notiError("OOPS! Lỗi rồi","Hình như bạn đã nhập sai email hoặc mật khẩu rồi. Bạn vui lòng kiểm tra lại nhé!");
       });
-    } else {
-      // Show an error toast if credentials are invalid
-      this.toast.error({
-        detail: 'Invalid email or password',
-        summary: 'Error',
-        duration: 5000,
-        position: 'topRight'
-      });
+    }
+    else{
+        this.appService.notiError("OOPS! Lỗi rồi","Bạn đã không hoàn thành theo form đăng nhập yêu cầu");
     }
   }
 }

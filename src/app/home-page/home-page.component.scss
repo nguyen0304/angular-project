@@ -36,7 +36,7 @@ body{
 ::placeholder{
     font-size: 18px;
 }
-.btn{
+.account{
     margin-right: 20px;
 }
 .p-2{
@@ -74,4 +74,21 @@ body{
 }
 .p-2{
     color: whitesmoke; font-size: 14px;
+}
+.courses-favorite{
+    color: black;
+    width: 40px;
+    height: 40px;
+}
+.circle {
+    width: 35px; /* Đường kính của hình tròn */
+    height: 35px; /* Đường kính của hình tròn */
+    background-color: #000; /* Màu fill của hình tròn (màu đen) */
+    border-radius: 50%; /* Để tạo hình tròn */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff; /* Màu chữ bên trong hình tròn (màu trắng) */
+    font-size: 20px; /* Cỡ chữ */
+    font-weight: bold; /* Độ đậm của chữ */
 }
