@@ -1,0 +1,17 @@
+import { Injectable } from '@angular/core';
+import { AppService } from './app.service';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CategoryService {
+  url = '';
+  constructor(private appService: AppService,
+    private http: HttpClient) {
+   }
+   getAllCategories(){
+    this.url = this.appService.getUrlCourses()+'/categories';
+    return this.http.get(`${this.url}`).pipe();
+   }
+}

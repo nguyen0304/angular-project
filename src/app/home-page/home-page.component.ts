@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Category } from '../Model/category';
 import { AppService } from '../Service/app.service';
+import { AuthService } from '../Service/auth.service';
+import { CategoryService } from '../Service/category.service';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -17,12 +19,37 @@ export class HomePageComponent {
   panelOpenState = true;
 
     ////////////////////////////////////////////////////////CONSTRUCTOR////////////////////////////////////////////////////////////////
-  constructor(private appService: AppService) {
+  constructor(
+    @Inject(AppService)private appService: AppService, 
+    @Inject(AuthService) private authService: AuthService,
+    @Inject(CategoryService) private categoryService: CategoryService) {
         this.Init();
+        
+  }
+  checkValid(){
+    let token = localStorage.getItem('token');
+    if(token  == null){
+      return false;
+    }
+    else{
+        this.authService.validateToken(token).subscribe((data: any) => {
+          if(data.status == true)
+          {
+            this.getAllCategories();
+            return true;
+          }
+          
+        else {
+          this.appService.logOut();
+          return false;}
+        })
+        return false;
+    }
   }
   Init(){
-    if(this.appService.getToken()  == 'FALSE'){
+    if(this.checkValid() == true ){
       this.notToken = true;
+      
     }
     else{
       this.notToken = false;
@@ -42,34 +69,9 @@ export class HomePageComponent {
     this.isLogin = false;
     this.isSignUp = false;
   }
-}
-const DATA: Category[] = [
-  {
-      "id": 10012,
-      "category": "Development"
-  },
-  {
-      "id": 10015,
-      "category": "Finance"
-  },
-  {
-      "id": 10016,
-      "category": "Health"
-  },
-  {
-      "id": 10018,
-      "category": "Music"
-  },
-  {
-      "id": 10019,
-      "category": "Office"
-  },
-  {
-      "id": 10014,
-      "category": "PhotoVideo"
-  },
-  {
-      "id": 10017,
-      "category": "Real Estate"
+  getAllCategories(){
+      this.categoryService.getAllCategories().subscribe((data: any) => {
+        this.ListCategories = data;
+      })
   }
-]
+}

@@ -110,7 +110,7 @@ body{
     margin: 5px 5px 5px 5px;
 }
 .item-carousel2{
-    background-image: url('../../assets/slide5.jpg');
+    background-image: url('https://png.pngtree.com/png-clipart/20220226/ourmid/pngtree-color-simple-grid-background-frame-photo-frame-png-image_4413390.png');
     width : 1400px;
     height: 400px;
     margin: 5px 5px 5px 5px;
@@ -138,4 +138,10 @@ body{
     flex-direction: row;
     text-align: center; 
     align-items: center; justify-content: center;
+}
+.box-list{
+    margin-top: 40px;
+}
+.nav-link{
+    margin-top: 10px;
 }
