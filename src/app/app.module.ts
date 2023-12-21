@@ -31,6 +31,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppService } from './Service/app.service';
 import { AuthService } from './Service/auth.service';
 import { InterceptorService } from './Interceptor/interceptor.service';
+import { AdvertisementComponent } from './component/advertisement/advertisement.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { InterceptorService } from './Interceptor/interceptor.service';
     LoginComponent,
     SignUPComponent,
     CategoryComponent,
+    AdvertisementComponent,
   ],
   providers: [
     AppService,

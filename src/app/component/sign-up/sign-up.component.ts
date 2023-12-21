@@ -67,7 +67,10 @@ export class SignUPComponent {
             
             this.handleLogin();
           }
-        })
+        }, error => {
+          this.appService.notiError("OOPS! Đã có lỗi","Email bạn vừa nhập đã tồn tại trong hệ thống. Xin vui lòng thử lại.");
+        });
+    
         
       }
   }

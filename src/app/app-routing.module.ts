@@ -12,7 +12,8 @@ const routes: Routes = [
     path: 'category',
     component: CategoryComponent,
     title: 'FEDUCATION',
-  }
+  },
+
 ];
 
 @NgModule({

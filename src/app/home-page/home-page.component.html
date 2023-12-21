@@ -8,6 +8,12 @@
       crossorigin="anonymous"
     />
     <link
+      href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.0-rc.1/dist/css/coreui.min.css"
+      rel="stylesheet"
+      integrity="sha384-6YUohc5ifdoNCo0LbNiTPUr/PgSpk8g4xTkq3gTstOpNuzSI4CPX8jNul1r9kpFV"
+      crossorigin="anonymous"
+    />
+    <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     />
@@ -15,6 +21,16 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.0.0-rc.1/dist/js/coreui.min.js"
+      integrity="sha384-yIN7KBAWSPbR8QfA9iqq4ODblVsFM4Ib4nLpoZZi+0HxLjJUmO4WlnbH/xTHHPCA"
+      crossorigin="anonymous"
+    ></script>
     <!-- To be Added  -->
   </head>
   <body>
@@ -30,12 +46,7 @@
                   src="https://www.fetel.hcmus.edu.vn/wp-content/uploads/2022/09/logo-fetel.png"
                   alt=""
                   srcset=""
-                  style="
-                    width: 150px;
-                    height: auto;
-                    margin-left: 20px;
-                    margin-right: 20px;
-                  "
+                  style="width: 150px; height: auto; margin-right: 20px"
               /></a>
               <form
                 class="d-flex border border-primary-subtle search rounded-pill"
@@ -95,9 +106,7 @@
                 </li>
                 <li class="nav-item" *ngIf="!notToken">
                   <span class="nav-link">
-                    <div class="circle">
-                      NT
-                    </div>
+                    <div class="circle">NT</div>
                   </span>
                 </li>
               </ul>
@@ -128,6 +137,114 @@
 
         <div class="p-2" *ngIf="isSignUp">
           <app-sign-up></app-sign-up>
+        </div>
+      </div>
+
+      <!-- Example Code -->
+      <div class="container-adv">
+        <div
+          id="carouselExampleFade"
+          class="carousel slide carousel-fade carousel-dark slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item position-relative">
+              <div
+                class="item-carousel2 d-block w-100"
+              >
+                <div class="position-absolute top-50 start-50 translate-middle">
+                  <div class="box shadow-sm" style="text-align: center; align-items: center; justify-content: center; height: 120px; width: 300px;">
+                    <h1>Đăng nhập ngay</h1>
+                    <span class="body-title">
+                     Đăng nhập hoặc đăng ký
+                    </span>
+                    <span class="body-title"> 
+
+                      <button
+                      class="btn btn-info btn-primary"
+                    >
+                     Đăng nhập
+                    </button>
+                    <button
+                    class="btn btn-info btn-primary" 
+                    style="margin-left: 20px;"
+                  >
+                 Đăng ký
+                  </button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-caption d-none d-md-block">
+                <h5 style="font-weight: 600; font-size: 15px">
+                  Đăng nhập ngay
+                </h5>
+                <p>
+                    Hãy đăng nhập để tận hưởng các quyền lợi và trải nghiệm tốt nhất cùng hệ thống của chúng tôi
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item position-relative">
+              <div
+                class="item-carousel1 d-block w-100"
+              >
+                <div class="position-absolute top-50 start-50 translate-middle">
+                  <div class="box shadow-sm">
+                    <h1>HỌC CÙNG CHÚNG TÔI</h1>
+                    <span class="body-title">
+                      Bạn lần đầu đến đây ? Bạn muốn tìm các khóa học phù hợp với định hướng nghề nghiệp về lập trình trong tương lai ? Click ngay nút bên cạnh để bắt đầu
+                      <button
+                        class="btn btn-info btn-primary"
+                        style="color: aqua; justify-content: center; align-items: center;"
+                        
+                        
+                      >
+                        Learn on FEDUCATION
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-caption d-none d-md-block">
+                <h5 style="font-weight: 600; font-size: 15px">
+                  Hãy học cùng chúng tôi
+                </h5>
+                <p>
+                    Click vào nút nhấn trên để tìm hiểu về các khóa học và hãy để FEDUCATION đồng hành cùng bạn trên chặng đường tìm tri thức
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item active position-relative">
+              <div
+                class="item-carousel d-block w-100"
+              >
+                <div class="position-absolute top-50 start-50 translate-middle">
+                  <div class="box shadow-sm">
+                    <h1>Trở thành giáo viên cùng FEDUCATION</h1>
+                    <span class="body-title">
+                      Tận hưởng nhiều quyền lợi khi trở thành giáo viên của
+                      chúng tôi với việc được giảng dạy, đồng hành cùng chặng đường truyền tải kiến thức đến cho mọi người.
+                    </span>
+                    <button
+                    class="btn btn-info btn-primary"
+                    style="color: aqua"
+                  >
+                    Teach on FEDUCATION
+                  </button>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-caption d-none d-md-block">
+                <h5 style="font-weight: 600; font-size: 15px">
+                  Hãy trở thành cộng tác của chúng tôi
+                </h5>
+                <p>
+                  Click vào nút nhấn trên để tìm hiểu ngay đặc quyền và quyền
+                  lợi của việc trở thành giáo viên của FEDUCATION.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
