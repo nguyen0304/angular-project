@@ -90,7 +90,7 @@
                         Danh mục
                       </button>
                       <ul class="dropdown-menu box-list" style="margin-top: 20px; width: 497px;">
-                        <li *ngFor="let item of ListCategories; let i = index"><a class="dropdown-item" href="#">{{item?.category}}</a></li>
+                        <li *ngFor="let item of ListCategories; let i = index"><a class="dropdown-item" (click)="handleCategory(item?.id)">{{item?.category}}</a></li>
 
                       </ul>
                     </div>
@@ -121,7 +121,7 @@
                 </li>
               </ul>
 
-              <div *ngIf="notToken === true" class="account">
+              <div *ngIf="notToken" class="account">
                 <button
                   type="button"
                   class="btn btn-outline-secondary"
@@ -159,8 +159,8 @@
           data-bs-ride="carousel"
         >
           <div class="carousel-inner">
-            <div class="carousel-item position-relative">
-              <div
+            <div class="carousel-item position-relative" *ngIf="notToken">
+              <div 
                 class="item-carousel2 d-block w-100"
               >
                 <div class="position-absolute top-50 start-50 translate-middle">

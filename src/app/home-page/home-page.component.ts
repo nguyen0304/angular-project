@@ -17,6 +17,7 @@ export class HomePageComponent {
   isLogin = false;
   isSignUp = false;
   panelOpenState = true;
+  isCategory = false;
 
     ////////////////////////////////////////////////////////CONSTRUCTOR////////////////////////////////////////////////////////////////
   constructor(
@@ -33,26 +34,24 @@ export class HomePageComponent {
     }
     else{
         this.authService.validateToken(token).subscribe((data: any) => {
-          if(data.status == true)
-          {
+
             this.getAllCategories();
-            return true;
-          }
-          
-        else {
-          this.appService.logOut();
-          return false;}
-        })
-        return false;
+            if(data.status == true)
+              return true;
+            else{
+              return false;
+            }
+        });
+        return true;       
     }
   }
   Init(){
     if(this.checkValid() == true ){
-      this.notToken = true;
-      
-    }
-    else{
       this.notToken = false;
+    }
+    else if(this.checkValid() == false ){
+      this.notToken = true;
+      this.appService.logOut();
     }
   }
     ///////////////////////////////////////////////////////////FUNCTION AUTHORIZATION////////////////////////////////////////////////////
@@ -73,5 +72,8 @@ export class HomePageComponent {
       this.categoryService.getAllCategories().subscribe((data: any) => {
         this.ListCategories = data;
       })
+  }
+  handleCategory(id: any){
+    alert(id);
   }
 }
