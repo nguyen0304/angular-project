@@ -90,7 +90,8 @@
                         Danh mục
                       </button>
                       <ul class="dropdown-menu box-list" style="margin-top: 20px; width: 497px;">
-                        <li *ngFor="let item of ListCategories; let i = index"><a class="dropdown-item" (click)="handleCategory(item?.id)">{{item?.category}}</a></li>
+                        <li *ngFor="let item of ListCategories; let i = index"> <app-category [category]="item?.category" (categoryClicked)="handleCategoryClick($event)"></app-category></li>
+                        
 
                       </ul>
                     </div>
@@ -133,6 +134,7 @@
                   type="button"
                   class="btn btn-outline-dark"
                   (click)="handleSignUp()"
+                  style="margin-left: 30px;"
                 >
                   Đăng ký
                 </button>

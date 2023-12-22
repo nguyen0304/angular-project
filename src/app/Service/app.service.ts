@@ -39,6 +39,14 @@ export class AppService {
       position: 'topRight',
     });
   }
+  notiWarning(title: string, message: string){
+    this.toast.warning({
+      detail: title,
+      summary: message,
+      duration: 3000,
+      position: 'topRight',
+    })
+  }
   logOut(){
     localStorage.clear();
   }

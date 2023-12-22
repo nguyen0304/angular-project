@@ -14,4 +14,8 @@ export class CategoryService {
     this.url = this.appService.getUrlCourses()+'/categories';
     return this.http.get(`${this.url}`).pipe();
    }
+   getCoursesCategories(name: any){
+    this.url = this.appService.getUrlCourses() +'/cat/';
+    return this.http.get(`${this.url}${name}`).pipe();
+   }
 }

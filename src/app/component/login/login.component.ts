@@ -58,13 +58,18 @@ export class LoginComponent {
 
       console.log(email);
       this.authService.login(email, password).subscribe((data: any ) =>{
-        
+        this.authService.getUserProfile().subscribe((user: any) =>{
+          this.appService.notiSuccess("OK",user);
+        }, Error =>{
+          this.appService.notiSuccess("OK","FAIL");
+        })
         if(data.success == true){
           this.appService.notiSuccess("Bạn đã đăng nhập thành công","Chúc bạn có trải nghiệm tuyệt vời cùng FEDUCATION");
         }
         console.log(data);
         localStorage.setItem('token', data.token);
         this.loading = true;
+        
         location.reload();
       },
       error =>{

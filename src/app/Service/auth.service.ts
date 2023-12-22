@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppService } from './app.service';
 import { Observable } from 'rxjs';
@@ -7,7 +7,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
+  getUserById() {
+    throw new Error('Method not implemented.');
+  }
   url = '';
+  private baseUrl = 'http://localhost:9000/api/profile';
   constructor(private http: HttpClient, 
     private appService: AppService) {
     
@@ -30,5 +34,10 @@ export class AuthService {
    this.url = this.appService.getUrlValidate();
    return this.http.post(`${this.url}`, token).pipe();
   }
-
+  getUserProfile(): Observable<any> {
+    // Lấy thông tin người dùng từ server
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<any>(`${this.baseUrl}`, { headers, withCredentials: true });
+  }
 }
