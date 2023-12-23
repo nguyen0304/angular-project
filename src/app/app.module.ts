@@ -32,6 +32,7 @@ import { AppService } from './Service/app.service';
 import { AuthService } from './Service/auth.service';
 import { InterceptorService } from './Interceptor/interceptor.service';
 import { AdvertisementComponent } from './component/advertisement/advertisement.component';
+import { CourseComponent } from './course/course.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { AdvertisementComponent } from './component/advertisement/advertisement.
     SignUPComponent,
     CategoryComponent,
     AdvertisementComponent,
+    CourseComponent,
   ],
   providers: [
     AppService,
