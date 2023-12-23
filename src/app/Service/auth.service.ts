@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppService } from './app.service';
 import { Observable } from 'rxjs';
+import { User } from '../Model/user';
 
 @Injectable({
   providedIn: 'root',
@@ -39,10 +40,10 @@ export class AuthService {
     this.url = this.appService.getUrlLogout();
     return this.http.post(`${this.url}`, {}).pipe();
   }
-  getUserProfile(): Observable<any> {
+  getUserProfile(): Observable<User> {
     // Lấy thông tin người dùng từ server
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<any>(`${this.baseUrl}`);
+    return this.http.get<User>(`${this.baseUrl}`);
   }
 }

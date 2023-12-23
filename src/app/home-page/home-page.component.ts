@@ -4,6 +4,7 @@ import { AppService } from '../Service/app.service';
 import { AuthService } from '../Service/auth.service';
 import { CategoryService } from '../Service/category.service';
 import { Course } from '../Model/course';
+import { User } from '../Model/user';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -13,13 +14,14 @@ export class HomePageComponent {
   /////////////////////////////////////////////////////////////INIT////////////////////////////////////////////////////////////////////
   ListCategories: Category[] | null = [];
   ListCourses: Course[] | null = [];
+  user: User | null = null;
   notToken = false;
   isLogin = false;
   isSignUp = false;
   panelOpenState = true;
   isToken = false;
   isCategory = false;
-
+  nameInput: string | null = null;
   ////////////////////////////////////////////////////////CONSTRUCTOR////////////////////////////////////////////////////////////////
   constructor(
     @Inject(AppService) private appService: AppService,
@@ -27,57 +29,60 @@ export class HomePageComponent {
     @Inject(CategoryService) private categoryService: CategoryService
   ) {
     this.checkValid();
+    this.Init();
+    this.getAllCategories();
   }
   checkValid() {
     let token = localStorage.getItem('token');
     if (token == null) {
-      
       this.notToken = true;
       this.isToken = false;
-      alert(1);
-      
       return this.isToken;
-    } 
-    
-    else {
-      this.authService.getUserProfile().subscribe((user: any) =>{
-        this.appService.notiSuccess("OK",user);
-      }, Error =>{
-        this.appService.notiSuccess("OK","FAIL");
-      })
-      this.authService.validateToken(token).subscribe(
-        (data: any) => {
-          this.authService.getUserProfile().subscribe((user: any) =>{
-            this.appService.notiSuccess("OK",user);
-          }, Error =>{
-            this.appService.notiSuccess("OK","FAIL");
-          })
-          this.notToken = false;
-          
-          if (data.status == true) {
-            this.getAllCategories();
-            this.isToken = true;
+    } else {
+      this.authService.getUserProfile().subscribe(
+        (userOutput: any) => {
+          this.user = userOutput;
+          console.log(this.user?.userDTO);
+          this.appService.notiSuccess(
+            'Đã đăng nhập',
+            'Chào mừng bạn đã quay trở lại hệ thống'
+          );
+          this.isToken = true;
+
+          if (this.user?.userDTO) {
+            let stringName = this.user?.userDTO.fullname.split('');
+            let nameDisplay = stringName[0].concat(stringName[1]);
+            for (let i = stringName.length - 1; i >= 0; i--) {
+              if (stringName[i] == ' ') {
+                nameDisplay = stringName[0].concat(stringName[i + 1]);
+              }
+            }
+            this.nameInput = nameDisplay;
           }
+          this.Init();
+          console.log(this.nameInput);
         },
         (Error) => {
           this.notToken = true;
+          this.isToken = false;
+
+          this.appService.notiWarning(
+            'Phiên đăng nhập đã hết hạn',
+            'VUi lòng đăng nhập lại'
+          );
         }
       );
     }
     return this.isToken;
   }
-  // Init() {
-  //   let check = this.checkValid();
-
-  // }
+  Init() {}
   ///////////////////////////////////////////////////////////FUNCTION AUTHORIZATION////////////////////////////////////////////////////
   handleLogin() {
-
     this.reset();
     this.isLogin = true;
     this.authService.logout().subscribe((data: string) => {
-      this.appService.notiSuccess("Đã đăng xuất","Đăng xuất")
-  })
+      this.appService.notiSuccess('Đã đăng xuất', 'Đăng xuất');
+    });
   }
   handleSignUp() {
     this.reset();
@@ -99,7 +104,6 @@ export class HomePageComponent {
           'Vui lòng nhấn vào nút đăng nhập để tiến hành đăng nhập lại'
         );
         this.checkValid();
-        // this.Init();
       }
     );
   }

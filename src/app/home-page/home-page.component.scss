@@ -81,16 +81,30 @@ body{
     height: 40px;
 }
 .circle {
-    width: 35px; /* Đường kính của hình tròn */
-    height: 35px; /* Đường kính của hình tròn */
-    background-color: #000; /* Màu fill của hình tròn (màu đen) */
-    border-radius: 50%; /* Để tạo hình tròn */
+    width: 35px; 
+    height: 35px; 
+    background-color: #000; 
+    border-radius: 50%; 
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff; /* Màu chữ bên trong hình tròn (màu trắng) */
-    font-size: 20px; /* Cỡ chữ */
-    font-weight: bold; /* Độ đậm của chữ */
+    color: #fff; 
+    font-size: 20px; 
+    font-weight: bold; 
+}
+.circle1 {
+    width: 72px;
+    height: 73px;
+    background-color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    overflow: hidden;
+    margin-left: 30px;
 }
 .container-adv{
     width: 1474px;
@@ -145,3 +159,37 @@ body{
 .nav-link{
     margin-top: 10px;
 }
+.user{
+    padding-bottom: 30px;
+    margin-top: 68px;
+    margin-bottom: 20px;
+}
+.header-box{
+    margin-top: 40px;
+}
+
+.nav-item:hover .dropdown-menu {
+    display: block;
+  }
+  .item-user{
+    margin-right: 30%;
+  }
+  .nav-item:hover.dropdown-menu.show{
+    display: block;
+  }
+  .nav-link:hover.dropdown-menu.show{
+    display: block;
+  }
+  .dropdown-menu.show {
+	display: none;
+    }
+    .title-user{
+        color: black !important;
+        font-size: 16px;
+        margin-left: 141px;
+        
+        margin-bottom: 142px;
+    }
+    .dropdown-divider{
+            margin-top: -20%;
+    }
