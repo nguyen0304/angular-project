@@ -24,7 +24,7 @@ export class AppService {
     return this.url + '/auth/validate-token';
   }
   getUrlCourses(){
-    return this.url + '/courses';
+    return this.url + '/courses/top';
   }
   notiSuccess(title: string, message: string){
     this.toast.success({

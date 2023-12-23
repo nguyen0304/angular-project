@@ -1,1 +1,22 @@
-<p>course works!</p>
+<!-- course-list.component.html -->
+
+<div class="course-list-container">
+    <h1>Danh sách khoá học</h1>
+    <div class="course-list" #courseList>      
+        <div *ngFor="let course of courses" class="course-card">
+            <img [src]="course.thumbUrl" alt="Course Thumbnail" />
+            <h2>{{ course.title }}</h2>
+            <p>{{ course.subtitle }}</p>
+            <p>Author: {{ course.author }}</p>
+            <p>Category: {{ course.category }}</p>
+            <p>Rating: {{ course.rating }}</p>
+            
+            <p>Price: {{ course.price | currency:'USD':'symbol':'1.2-2' }}</p>
+            <p *ngIf="course.isFeatured">Featured Course</p>
+            <!-- Add other fields as needed -->
+        </div>
+    </div>
+    <!-- <button (click)="loadMore()">Load More</button> -->
+</div>
+  
+  

@@ -1,0 +1,38 @@
+/* styles.scss */
+
+/* Course list container styling */
+.course-list-container {
+  max-width: 800px; /* Adjust based on your layout */
+  margin: 0 auto;
+  overflow: auto; /* Enable horizontal scrolling if content overflows */
+}
+
+/* Course list styling */
+.course-list {
+  display: flex;
+  flex-wrap: nowrap; /* Ensure all items are in a single row */
+  padding-bottom: 10px; /* Optional: Add some padding to the bottom for better appearance */
+}
+
+/* Individual course card styling */
+.course-card {
+  flex: 0 0 calc(33.3333% - 20px); /* Adjust based on your layout */
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-right: 20px; /* Add margin between cards */
+}
+
+/* Remove margin for the last course card to avoid extra space */
+.course-card:last-child {
+  margin-right: 0;
+}
+
+/* Course thumbnail styling */
+.course-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* ... Other styling for course cards ... */
