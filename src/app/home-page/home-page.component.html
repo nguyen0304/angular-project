@@ -135,11 +135,7 @@
                   </span>
                 </li>
                 <div class="d-flex flex-column mb-3">
-                  <li
-                    class="nav-item"
-                    *ngIf="!notToken"
-
-                  >
+                  <li class="nav-item" *ngIf="!notToken">
                     <span class="nav-link">
                       <div class="btn-group" style="background-color: #f3f4f7">
                         <button
@@ -160,35 +156,79 @@
                           style="margin-top: 20px; width: 350px"
                           data-bs-popper="static"
                         >
-                          <li _ngcontent-ng-c3843178991="" class="item-user justify-content-center" >
-                            
-                            <div _ngcontent-ng-c3843178991="d-flex flex-row mb-3 justify-content-end">
-                              <div
-                                _ngcontent-ng-c3843178991="">
+                          <li
+                            _ngcontent-ng-c3843178991=""
+                            class="item-user justify-content-center"
+                          >
+                            <div
+                              _ngcontent-ng-c3843178991="d-flex flex-row mb-3 justify-content-end"
+                            >
+                              <div _ngcontent-ng-c3843178991="">
                                 <div
                                   _ngcontent-ng-c3843178991=""
                                   class="circle1 p-2"
                                 >
                                   {{ nameInput }}
                                 </div>
-                                <div  _ngcontent-ng-c3843178991="" class="p-2">
+                                <div _ngcontent-ng-c3843178991="" class="p-2">
                                   <div class="d-flex flex-column mb-3">
                                     <div class="p-2 title-user">
                                       <h1>
-                                        {{user?.userDTO?.fullname}}
+                                        {{ user?.userDTO?.fullname }}
                                       </h1>
-                                      {{user?.userDTO?.email}}
+                                      {{ user?.userDTO?.email }}
                                     </div>
-                                    
                                   </div>
                                 </div>
                               </div>
                             </div>
                           </li>
-                          <hr class="dropdown-divider">
-                          <li class="dropdown-item">
-                            <div class="p-2">Flex item 3</div>
+                          <hr class="dropdown-divider" />
+                          <div >
+                          <li type="button" class="dropdown-item ng-star-inserted">
+                            <span class="body-user">
+                              Hồ sơ học tập
+                            </span>
                           </li>
+                          <li type="button" class="dropdown-item ng-star-inserted">
+                            <span class="body-user">
+                              giỏ hàng của tôi
+                            </span>
+                          </li>
+                          <li type="button" class="dropdown-item ng-star-inserted">
+                            <span class="body-user">
+                              Danh sách yêu thích
+                            </span>
+                          </li>
+                          <li type="button" class="dropdown-item ng-star-inserted">
+                            <span class="body-user">
+                              Dạy học trêm FEDUCATION
+                            </span>
+                          </li>
+                        </div>
+                        <hr style="margin-top: 1px;" class="dropdown-divider" />
+                        <div>
+                        <li type="button" class="dropdown-item ng-star-inserted">
+                          <span class="body-user">
+                            Cài đặt tài khoản
+                          </span>
+                        </li>
+                        <li type="button" class="dropdown-item ng-star-inserted">
+                          <span class="body-user">
+                            Các phương thức thanh toán
+                          </span>
+                        </li>
+                        <li type="button" class="dropdown-item ng-star-inserted">
+                          <span class="body-user">
+                            Về chúng tôi
+                          </span>
+                        </li>
+                        <li  type="button" class="dropdown-item">
+                          <span class="body-user last">
+                            Đăng xuất
+                          </span>
+                        </li>
+                      </div>
                         </ul>
                       </div>
                     </span>
@@ -217,7 +257,7 @@
           </div>
         </nav>
       </section>
-
+<app-category></app-category>
       <div *ngIf="notToken">
         <div class="p-2" style="margin-right: 20px" *ngIf="isLogin">
           <app-login></app-login>

@@ -193,3 +193,20 @@ body{
     .dropdown-divider{
             margin-top: -20%;
     }
+.body-user{
+    font-size: 18px;  
+    color: #2E2E2E;
+    margin-bottom: -10px;
+}
+.dropdown-item{
+    height: 50px;
+}
+.body-user:focus{
+    color: white;
+    background-color: aqua;
+}
+.last:hover{
+    color: red;
+    font-weight: 800px;
+    
+}
