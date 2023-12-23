@@ -7,11 +7,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
+  token: String | null = null;
   getUserById() {
     throw new Error('Method not implemented.');
   }
   url = '';
-  private baseUrl = 'http://localhost:9000/api/profile';
+  private baseUrl = 'http://localhost:9000/api/profile/me';
   constructor(private http: HttpClient, 
     private appService: AppService) {
     
@@ -20,7 +21,7 @@ export class AuthService {
   login(email: any, password: any): Observable<any> { 
     this.url = this.appService.geturlLogin();  //trả về url để login
     let obj = {email, password}; 
-    return this.http.post(`${this.url}`, obj).pipe();
+    return this.http.post(`${this.url}`, obj, { withCredentials: true }).pipe();
   }
   register(fullname: any, email: any, password: any, confirmPass: any): Observable<any> {
    
@@ -34,10 +35,14 @@ export class AuthService {
    this.url = this.appService.getUrlValidate();
    return this.http.post(`${this.url}`, token).pipe();
   }
+  logout(): Observable<any> {
+    this.url = this.appService.getUrlLogout();
+    return this.http.post(`${this.url}`, {}).pipe();
+  }
   getUserProfile(): Observable<any> {
     // Lấy thông tin người dùng từ server
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<any>(`${this.baseUrl}`, { headers, withCredentials: true });
+    return this.http.get<any>(`${this.baseUrl}`);
   }
 }

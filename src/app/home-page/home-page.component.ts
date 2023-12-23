@@ -35,9 +35,16 @@ export class HomePageComponent {
       this.notToken = true;
       this.isToken = false;
       alert(1);
+      
       return this.isToken;
     } 
+    
     else {
+      this.authService.getUserProfile().subscribe((user: any) =>{
+        this.appService.notiSuccess("OK",user);
+      }, Error =>{
+        this.appService.notiSuccess("OK","FAIL");
+      })
       this.authService.validateToken(token).subscribe(
         (data: any) => {
           this.authService.getUserProfile().subscribe((user: any) =>{
@@ -65,8 +72,12 @@ export class HomePageComponent {
   // }
   ///////////////////////////////////////////////////////////FUNCTION AUTHORIZATION////////////////////////////////////////////////////
   handleLogin() {
+
     this.reset();
     this.isLogin = true;
+    this.authService.logout().subscribe((data: string) => {
+      this.appService.notiSuccess("Đã đăng xuất","Đăng xuất")
+  })
   }
   handleSignUp() {
     this.reset();

@@ -17,6 +17,9 @@ export class AppService {
   getUrlSignUp(){
     return this.url + '/auth/register';
   }
+  getUrlLogout(){
+    return this.url + '/auth/logout';
+  }
   getUrlValidate(){
     return this.url + '/auth/validate-token';
   }

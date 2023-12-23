@@ -52,24 +52,18 @@ export class LoginComponent {
   handleLogin(email: any, password: any, loginForm: NgForm) {
     email = email.value;
     password = password.value;
-    
+
     // Check if email and password are valid
     if (loginForm.valid) {
 
       console.log(email);
       this.authService.login(email, password).subscribe((data: any ) =>{
-        this.authService.getUserProfile().subscribe((user: any) =>{
-          this.appService.notiSuccess("OK",user);
-        }, Error =>{
-          this.appService.notiSuccess("OK","FAIL");
-        })
+        
         if(data.success == true){
           this.appService.notiSuccess("Bạn đã đăng nhập thành công","Chúc bạn có trải nghiệm tuyệt vời cùng FEDUCATION");
         }
-        console.log(data);
         localStorage.setItem('token', data.token);
         this.loading = true;
-        
         location.reload();
       },
       error =>{
@@ -80,4 +74,5 @@ export class LoginComponent {
         this.appService.notiError("OOPS! Lỗi rồi","Bạn đã không hoàn thành theo form đăng nhập yêu cầu");
     }
   }
+
 }
