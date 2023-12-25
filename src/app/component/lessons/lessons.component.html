@@ -10,26 +10,25 @@
       <div class="p-2">
         <video
           height="600px"
-          width="1300px"
+          width="1200px"
           style="background-color: black; margin-top: -10px; margin-left: -10px"
           controls
         >
           <source src="../../../assets/video1.mp4" />
         </video>
         <div>
-          <h1 class="title">Complete Python Bootcamp</h1>
+          <h1 class="title">{{course?.title}}</h1>
           <span class="body-details">
             <p class="header-details">Nội dung khóa học:</p>
-            Learn Python like a Professional. Start from the basics and go all
-            the way to creating your own applications and games.
+                {{course?.subtitle}}
           </span>
           <span class="body-details">
             <p class="header-details">Giảng viên:</p>
-            Corey Schafer
+            {{course?.author}}
           </span>
           <span class="body-details">
             <p class="header-details">Số điểm đánh giá trung bình:</p>
-            4.5/5
+            {{course?.rating}}/5
           </span>
           <span class="body-details">
             <p class="header-details">Các khóa học cùng chủ đề:</p>
@@ -85,21 +84,6 @@
                 </label>
               </div>
             </div>
-          </li>
-          <li class="list-lessons">
-            <a class="dropdown-item">Separated link</a>
-          </li>
-          <li class="list-lessons">
-            <a class="dropdown-item">Separated link</a>
-          </li>
-          <li class="list-lessons">
-            <a class="dropdown-item">Separated link</a>
-          </li>
-          <li class="list-lessons">
-            <a class="dropdown-item">Separated link</a>
-          </li>
-          <li class="list-lessons">
-            <a class="dropdown-item">Separated link</a>
           </li>
         </ul>
       </div>

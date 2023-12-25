@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Course } from 'src/app/Model/course';
 import { Lessons } from 'src/app/Model/lessons';
+import { CourseService } from 'src/app/Service/course.service';
 import { LessonsService } from 'src/app/Service/lessons.service';
 
 @Component({
@@ -13,8 +15,10 @@ export class LessonsComponent {
   STT: number| null = null;
   lessonsList: Lessons[] | null = [];
   lessonId: number | null = 0;
+  course: Course | null = null;
   constructor(private lessonService: LessonsService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private courseService: CourseService) {
     this.idn = 1;
     
   }
@@ -46,11 +50,16 @@ export class LessonsComponent {
       console.log(data.getLessonsByCourseId.content);
       if(data.getLessonsByCourseId.content)
       this.lessonsList = data.getLessonsByCourseId.content;
+
       // for(let i of data.getLessonsByCourseId.content){
 
       //   if(data.getLessonsBy.content[i])
       //   this.lessonsList?.push(data.getLessonsBy.content);
       // }
+   })
+   if(this.lessonId)
+   this.courseService.getDetailsCourse(this.lessonId).subscribe((data: Course) =>{
+     this.course = data;   
    })
    console.log(this.lessonsList);
   }
