@@ -1,10 +1,11 @@
-import { Component, Inject } from '@angular/core';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { Category } from '../Model/category';
 import { AppService } from '../Service/app.service';
 import { AuthService } from '../Service/auth.service';
 import { CategoryService } from '../Service/category.service';
 import { Course } from '../Model/course';
 import { User } from '../Model/user';
+import { ShareService } from '../Service/shared/share.service';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -22,12 +23,15 @@ export class HomePageComponent {
   isToken = false;
   isCategory = false;
   nameInput: string | null = null;
+  @Output()  dataEvent = new EventEmitter<String>();
   ////////////////////////////////////////////////////////CONSTRUCTOR////////////////////////////////////////////////////////////////
   constructor(
     @Inject(AppService) private appService: AppService,
     @Inject(AuthService) private authService: AuthService,
-    @Inject(CategoryService) private categoryService: CategoryService
+    @Inject(CategoryService) private categoryService: CategoryService,
+    @Inject(ShareService) private shareService: ShareService,
   ) {
+    
     this.checkValid();
     this.Init();
     this.getAllCategories();
@@ -104,11 +108,16 @@ export class HomePageComponent {
           'Vui lòng nhấn vào nút đăng nhập để tiến hành đăng nhập lại'
         );
         this.checkValid();
+        location.reload();
       }
     );
   }
-
-  handleCategoryClick(clickedCategory: string) {
-    console.log('Category clicked in parent:', clickedCategory);
+  ////////////////////////////////////////////////////////////////FUNCTION GET DATA//////////////////////////////////////////////////////////////////
+  // handleCategoryClick(clickedCategory: string) {
+  //   console.log('Category clicked in parent:', clickedCategory);
+  //   this.category.emit('Hello from ComponentB!');
+  // }
+  sendData(category: any) {
+    this.shareService.setCategory(category);
   }
 }

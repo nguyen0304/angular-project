@@ -1,0 +1,67 @@
+
+.bar{
+    height: 100%;
+    width: 215px;
+    background-color: gray;
+    border-left: solid 5px #000;
+    margin-left: -8px;
+}
+.title{
+    justify-content: center !important;
+    text-align: center;
+    align-items: center ;
+}
+.header-details{
+    font-weight: 600;
+    margin-right: 10px;
+}
+.body-details{
+    display: flex !important;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    line-height: 1.5;
+    color: black;
+    
+
+}
+.lesson{
+    border: solid 1px burlywood;
+}
+.lessons-other{
+    margin-top: -10px;
+    width: 236px;
+    margin-left: -14px;
+}
+.title-list{
+    color: black;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    margin-left: 10px
+}
+.active{
+    background-color: aqua;
+
+}
+.header-list{
+    border-bottom: solid 1px black;
+}
+.detail-list{
+    font-style: italic;
+    color: gray;
+    font-size: 16px;
+}
+.conten-lessons{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.dropdown-item:hover{
+    background-color: pink !important;
+}
+.item-active{
+    margin-left: 10px;
+}
