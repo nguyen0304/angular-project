@@ -42,11 +42,7 @@
             <span class="title-list"> NỘI DUNG KHÓA HỌC </span>
             <span class="detail-list"> Số video: 10 | Thời lượng: 1h30p </span>
           </div>
-
-          <li class="list-lessons">
-            <a class="dropdown-item">Separated link</a>
-          </li>
-          <li class="list-lessons active" id ={{STT}}>
+          <li class="list-lessons active" id ={{STT}} *ngFor="let element of lessonsList; let i = index">
             <div class="item-active" id="{{idn}}" >
                 <div class="form-check">
                   <input
@@ -59,7 +55,7 @@
                   />
                   <label class="form-check-label" for="flexCheckChecked">
                     <div>
-                      <span class="conten-lessons"> Bài 1: </span>
+                      <span class="conten-lessons"> Bài {{element.lessonName}}</span>
                       <span class="conten-lessons" style="font-style: italic">
                         Đánh dấu để hoàn thành
                       </span>
