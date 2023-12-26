@@ -33,6 +33,8 @@ import { AuthService } from './Service/auth.service';
 import { InterceptorService } from './Interceptor/interceptor.service';
 import { AdvertisementComponent } from './component/advertisement/advertisement.component';
 import { LessonsComponent } from './component/lessons/lessons.component';
+import {MatRadioModule} from '@angular/material/radio';
+import {ProgressSpinnerMode, MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +60,9 @@ import { LessonsComponent } from './component/lessons/lessons.component';
     NgSwitch,
     NgSwitchCase,
     AppRoutingModule,
+    MatProgressSpinnerModule,
     BrowserAnimationsModule,
+    MatRadioModule,
     MatSlideToggleModule,
     MatCardModule,
     MatButtonModule,
