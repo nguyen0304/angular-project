@@ -11,6 +11,7 @@ import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { ActivatedRoute } from '@angular/router';
 import { Course } from 'src/app/Model/course';
+import { Goals } from 'src/app/Model/goals';
 import { Lessons } from 'src/app/Model/lessons';
 import { AppService } from 'src/app/Service/app.service';
 import { CourseService } from 'src/app/Service/course.service';
@@ -28,6 +29,7 @@ export class LessonsComponent implements OnInit, AfterViewChecked {
   idn: number | null = null;
   STT: number | null = null;
   lessonsList: Lessons[] | null = [];
+  goalsList: Goals[] | null = [];
   lessonId: number | null = 0;
   course: Course | null = null;
   lastSeekTime: number = 0;
@@ -62,6 +64,7 @@ width: any;
       }
     });
     this.getAllLessons();
+    this.getGoalsCourse();
     this.myVideo?.nativeElement.addEventListener('timeupdate', () =>
       this.updateProgress()
     );
@@ -112,6 +115,19 @@ width: any;
         .subscribe((data: Course) => {
           this.course = data;
         });
+  }
+  getGoalsCourse(){
+    if(this.lessonId){
+      this.courseService.getObjectiveCourse(this.lessonId).subscribe((data: any) => {
+        this.goalsList = data.getCourseObjectives;
+        console.log(this.goalsList);
+      },
+      Error =>{
+        console.log(Error.message);
+      })
+      console.log(this.goalsList);
+    }
+    
   }
   handleInput(id: any, event: Event) {
     const video = this.myVideo?.nativeElement;
@@ -227,4 +243,5 @@ width: any;
     }
     
   }
+
 }

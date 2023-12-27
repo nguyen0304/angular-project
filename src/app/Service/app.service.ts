@@ -29,6 +29,9 @@ export class AppService {
   getUrlLessons(){
     return this.url + '/lessons/course';
   }
+  getUrlGoals(){
+    return this.url + '/objectives/course/';
+  }
   notiSuccess(title: string, message: string){
     this.toast.success({
       detail: title,

@@ -23,7 +23,6 @@ export class CategoryComponent implements OnInit {
   constructor(private categoryService: CategoryService, private appService: AppService,
     private sharedService: ShareService) {
       this.category = this.sharedService.getCategory();
-      alert(this.category)
 
   }
 
