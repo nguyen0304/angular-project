@@ -35,6 +35,8 @@ import { AdvertisementComponent } from './component/advertisement/advertisement.
 import { LessonsComponent } from './component/lessons/lessons.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {ProgressSpinnerMode, MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatListModule} from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,6 +78,8 @@ import {ProgressSpinnerMode, MatProgressSpinnerModule} from '@angular/material/p
     MatProgressBarModule,
     MatExpansionModule,
     HttpClientModule,
+    MatTabsModule,
+    MatListModule,
   ],
 })
 export class AppModule {}
