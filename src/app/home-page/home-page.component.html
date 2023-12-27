@@ -100,7 +100,7 @@
                       >
                         <li  *ngFor="let item of ListCategories; let i = index">
 
-                            <a class="dropdown-item" (click)="sendData(item?.category)">{{ item?.category }}</a>  
+                            <a type="button"  class="dropdown-item" (click)="sendData(item?.category)">{{ item?.category }}</a>  
                         </li>
                       </ul>
                     </div>
@@ -379,7 +379,11 @@
         </div>
       </div>
     </div>
-    <app-category style="margin-top: 50%; color: black;"></app-category>
+    <div style="margin-top: 40%; margin-left: 25px;">
+      <app-highlight ></app-highlight>
+    </div>
+    
+    <!-- <app-category style="margin-top: 50%; color: black;"></app-category> -->
   </body>
   <footer class="">
     <div class="container-footer">

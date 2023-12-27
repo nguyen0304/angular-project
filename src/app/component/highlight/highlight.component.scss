@@ -1,0 +1,115 @@
+body{
+    font-family: Lexend;
+}
+h5{
+    font-size: 30px;
+    font-weight: 700;
+
+}
+.title{
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 600;
+}
+.item-carousel2{
+    background-image: url('https://png.pngtree.com/background/20210710/original/pngtree-blue-hand-painted-style-stitching-mosaic-business-grid-background-picture-image_982665.jpg');
+}
+.container-adv{
+    width: 1474px;
+    height: 350px;
+    margin-top: 20%;
+}
+
+.item-carousel1{
+    background-image: url('https://png.pngtree.com/background/20210710/original/pngtree-blue-hand-painted-style-stitching-mosaic-business-grid-background-picture-image_982665.jpg');
+    width : 1400px;
+    height: 400px;
+    margin: 5px 5px 5px 5px;
+}
+.item-carousel{
+    background-image: url('https://png.pngtree.com/background/20210710/original/pngtree-blue-hand-painted-style-stitching-mosaic-business-grid-background-picture-image_982665.jpg');
+    width : 1400px;
+    height: 400px;
+    margin: 5px 5px 5px 5px;
+}
+.box{
+    margin-top: 50px;
+    margin-right: 30px;
+    width: 445px;
+    height: 176px;
+    background-color: white;
+    margin-right: 900px;
+    margin-bottom: 50px;
+}
+.header-title{
+    font-size: 16px;
+    font-family: Lexend;
+    font-weight: 400px;
+    text-align: center; 
+    align-items: center; 
+    justify-content: center;
+}
+.body-title{
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+    text-align: center; 
+    align-items: center; justify-content: center;
+}
+.box-list{
+    margin-top: 40px;
+}
+.nav-link{
+    margin-top: 10px;
+}
+.user{
+    padding-bottom: 30px;
+    margin-top: 68px;
+    margin-bottom: 20px;
+}
+.header-box{
+    margin-top: 40px;
+}
+
+.nav-item:hover .dropdown-menu {
+    display: block;
+  }
+  .item-user{
+    margin-right: 30%;
+  }
+  .nav-item:hover.dropdown-menu.show{
+    display: block;
+  }
+  .nav-link:hover.dropdown-menu.show{
+    display: block;
+  }
+  .dropdown-menu.show {
+	display: none;
+    }
+    .title-user{
+        color: black !important;
+        font-size: 16px;
+        margin-left: 141px;
+        
+        margin-bottom: 142px;
+    }
+    .dropdown-divider{
+            margin-top: -20%;
+    }
+.body-user{
+    font-size: 18px;  
+    color: #2E2E2E;
+    margin-bottom: -10px;
+}
+.dropdown-item{
+    height: 50px;
+}
+.body-user:focus{
+    color: white;
+    background-color: aqua;
+}
+.last:hover{
+    color: red;
+    font-weight: 800px;
+    
+}

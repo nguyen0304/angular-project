@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { Category } from '../Model/category';
 import { AppService } from '../Service/app.service';
 import { AuthService } from '../Service/auth.service';
@@ -6,15 +6,18 @@ import { CategoryService } from '../Service/category.service';
 import { Course } from '../Model/course';
 import { User } from '../Model/user';
 import { ShareService } from '../Service/shared/share.service';
+import { CourseService } from '../Service/course.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit {
   /////////////////////////////////////////////////////////////INIT////////////////////////////////////////////////////////////////////
   ListCategories: Category[] | null = [];
-  ListCourses: Course[] | null = [];
+  
+
   user: User | null = null;
   notToken = false;
   isLogin = false;
@@ -30,12 +33,19 @@ export class HomePageComponent {
     @Inject(AuthService) private authService: AuthService,
     @Inject(CategoryService) private categoryService: CategoryService,
     @Inject(ShareService) private shareService: ShareService,
+    private router: Router
   ) {
-    
-    this.checkValid();
-    this.Init();
-    this.getAllCategories();
+
+
   }
+
+  ngOnInit(){
+      this.checkValid();
+      this.Init();
+      this.getAllCategories();
+  }
+
+  
   checkValid() {
     let token = localStorage.getItem('token');
     if (token == null) {
@@ -117,7 +127,15 @@ export class HomePageComponent {
   //   console.log('Category clicked in parent:', clickedCategory);
   //   this.category.emit('Hello from ComponentB!');
   // }
-  sendData(category: any) {
-    this.shareService.setCategory(category);
+  sendData(category: string | undefined): void {
+    if (category) {
+      // Navigate to the 'category' route with the category parameter
+      this.router.navigate(['/category', category]);
+    }
+  }
+  sendId(id: any){
+    this.shareService.setIdCoures(id);
   }
 }
+
+

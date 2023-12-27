@@ -37,6 +37,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {ProgressSpinnerMode, MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
+import { HighlightComponent } from './component/highlight/highlight.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import {MatListModule} from '@angular/material/list';
     CategoryComponent,
     AdvertisementComponent,
     LessonsComponent,
+    HighlightComponent,
   ],
   providers: [
     AppService,

@@ -10,7 +10,7 @@ const routes: Routes = [
     title: 'FEDUCATION',
   },
   {
-    path: 'category',
+    path: 'category/:category',
     component: CategoryComponent,
     title: 'FEDUCATION',
   },
@@ -19,6 +19,7 @@ const routes: Routes = [
     component: LessonsComponent,
     title: 'FEDUCATION',
   },
+
 
 ];
 
