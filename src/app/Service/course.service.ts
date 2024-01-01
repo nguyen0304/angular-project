@@ -16,8 +16,8 @@ export class CourseService {
   ) {
     this.url = this.appService.getUrlCourses();
    }
-   getDetailsCourse(id: number): Observable<Course> {
-      return this.http.get<Course>(`${this.url}/id/${id}`).pipe();
+   getDetailsCourse(id: number): Observable<any> {
+      return this.http.get<any>(`${this.url}/id/${id}`).pipe();
    }
    getObjectiveCourse(id: number): Observable<Goals[]> {
       this.url = this.appService.getUrlGoals();

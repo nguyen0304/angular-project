@@ -26,7 +26,7 @@ export class AuthService {
   }
   register(fullname: any, email: any, password: any, confirmPass: any): Observable<any> {
    
-    let obj = {fullname, email, password, confirmPass};
+    let obj = {fullname, email, password, confirmPass,  userRole: "ROLE_STUDENT"};
     this.url = this.appService.getUrlSignUp();
     console.log(obj);
     return this.http.post(`${this.url}`, obj).pipe();

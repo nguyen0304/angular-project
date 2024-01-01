@@ -27,7 +27,7 @@ export class AppService {
     return this.url + '/courses';
   }
   getUrlLessons(){
-    return this.url + '/lessons/course';
+    return this.url + '/lessons';
   }
   getUrlGoals(){
     return this.url + '/objectives/course/';

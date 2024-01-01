@@ -57,16 +57,9 @@
     </nav>
     <div class="d-flex flex-row mb-3 scrollable-div" style="margin-top: 51px">
       <div class="p-2">
-        <video
-          #myVideo
-          (timeupdate)="updateProgress()"
-          height="600px"
-          width="1100px"
-          style="background-color: black; margin-top: -10px; margin-left: -10px"
-          controls
-        >
-          <source src="../../../assets/video1.mp4" />
-        </video>
+        <video #myVideo (timeupdate)="updateProgress()" height="600px" width="1100px" style="background-color: black; margin-top: -10px; margin-left: -10px" controls [src]="videoUrl"></video>
+
+
         <h1 class="title">{{ course?.title }}</h1>
         <mat-tab-group>
           <mat-tab label="Thông tin chung">
@@ -151,7 +144,7 @@
             <li
               type="button"
               class="list-lessons"
-              id="{{ i }}"
+              id="{{i}}"
               style="border-bottom: solid 1px black"
             >
               <div
@@ -165,11 +158,11 @@
                     style="margin-top: 15px"
                     type="checkbox"
                     value="true"
-                    id="{{ element.id }}"
+                    id="{{ element.id*100 }}"
                   />
-                  <div type="button" (click)="handleClick(element.id, i)">
+                  <div type="button" (click)="handleClick(element.id*100, i)">
                     <div class="conten-lessons">
-                      Bài {{ element.lessonName }}
+                     Bài {{ element.lessonName }}
                       <span class="conten-lessons" style="font-style: italic">
                         Đánh dấu để hoàn thành
                       </span>

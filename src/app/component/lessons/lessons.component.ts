@@ -2,14 +2,16 @@ import {
   AfterContentInit,
   AfterViewChecked,
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
+  Inject,
   OnInit,
   ViewChild,
 } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'src/app/Model/course';
 import { Goals } from 'src/app/Model/goals';
 import { Lessons } from 'src/app/Model/lessons';
@@ -40,6 +42,7 @@ export class LessonsComponent implements OnInit, AfterViewChecked {
   isRating : boolean = false;
   start: number | null = 0;
   isChecked: boolean = false;
+  videoUrl = '';
   @ViewChild('myVideo') myVideo: ElementRef | undefined;
   @ViewChild('progressBar') progressBar: ElementRef | undefined;
   progress: number = 0;
@@ -49,6 +52,7 @@ width: any;
     private route: ActivatedRoute,
     private courseService: CourseService,
     private appService: AppService,
+
   ) {
     this.idn = 1;
     this.indexActive = 0;
@@ -65,6 +69,7 @@ width: any;
     });
     this.getAllLessons();
     this.getGoalsCourse();
+    this.init();
     this.myVideo?.nativeElement.addEventListener('timeupdate', () =>
       this.updateProgress()
     );
@@ -112,8 +117,9 @@ width: any;
     if (this.lessonId)
       this.courseService
         .getDetailsCourse(this.lessonId)
-        .subscribe((data: Course) => {
+        .subscribe((data: any) => {
           this.course = data;
+          console.log(data);
         });
   }
   getGoalsCourse(){
@@ -160,6 +166,8 @@ width: any;
     this.reset();
     this.idActive = id;
     this.indexActive = index;
+    if(this.lessonsList)
+    this.videoUrl = this.lessonsList[index].video_url;
     this.setActive();
   }
   ngAfterViewChecked(): void {
@@ -204,6 +212,8 @@ width: any;
     if (this.lessonsList) {
       if (this.lessonsList[0]) {
         this.idActive = this.lessonsList[0].id;
+        this.videoUrl = this.lessonsList[0].video_url;
+        console.log(this.videoUrl);
       }
       let btn = document.getElementById('0');
       if (btn) {

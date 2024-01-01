@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Category } from 'src/app/Model/category';
 import { Course } from 'src/app/Model/course';
 import { AppService } from 'src/app/Service/app.service';
@@ -20,9 +21,10 @@ export class CategoryComponent implements OnInit {
   }
   // @Input() category: string | undefined;
   ListCourses: Course[] | null = [];
-  constructor(private categoryService: CategoryService, private appService: AppService,
+  constructor(private categoryService: CategoryService, private appService: AppService,private route: ActivatedRoute,
     private sharedService: ShareService) {
-      this.category = this.sharedService.getCategory();
+      //  Cach 1: this.category = this.sharedService.getCategory();
+      // console.log(this.category);
 
   }
 
@@ -36,7 +38,14 @@ export class CategoryComponent implements OnInit {
     });
   }
   ngOnInit(){
-
+    this.route.paramMap.subscribe((params) => {
+      const idParam = params.get('category') ?? null;
+      if (idParam !== null) {
+        this.category = idParam;
+      } else {
+        console.error('No lesson ID found in the URL.');
+      }
+    });
   }
 }
 

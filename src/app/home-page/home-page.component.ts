@@ -33,7 +33,7 @@ export class HomePageComponent implements OnInit {
     @Inject(AuthService) private authService: AuthService,
     @Inject(CategoryService) private categoryService: CategoryService,
     @Inject(ShareService) private shareService: ShareService,
-    private router: Router
+    @Inject(Router) private router: Router,
   ) {
 
 
@@ -131,6 +131,7 @@ export class HomePageComponent implements OnInit {
     if (category) {
       // Navigate to the 'category' route with the category parameter
       this.router.navigate(['/category', category]);
+      this.shareService.setCategory(category);
     }
   }
   sendId(id: any){
